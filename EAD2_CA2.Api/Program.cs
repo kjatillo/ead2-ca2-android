@@ -16,6 +16,7 @@ public class Program
         builder.Services.AddDbContext<MealPlannerContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+        builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
         builder.Services.AddScoped<IMealPlanRepository, MealPlanRepository>();
 
         builder.Services.AddControllers()
