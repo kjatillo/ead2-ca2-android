@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.EAD2_CA2AndroidClient" parent="android:Theme.Material.Light.NoActionBar" />
+    <!-- Base application theme with shared attributes -->
+    <style name="Theme.TestEad2TraditionalClient.Base" parent="">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_variant</item>
+        <item name="colorAccent">@color/secondary</item>
+        
+        <!-- Additional food palette colors -->
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorError">@color/error</item>
+        
+        <!-- Text colors -->
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+        <item name="colorOnBackground">@color/on_background</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorOnError">@color/on_error</item>
+        
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/primary_variant</item>
+        
+        <!-- Navigation bar styling -->
+        <item name="android:navigationBarColor">@color/primary</item>
+        <item name="android:navigationBarDividerColor">@color/primary_variant</item>
+    </style>
+    
+    <!-- Main theme without ActionBar -->
+    <style name="Theme.TestEad2TraditionalClient" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:theme">@style/Theme.TestEad2TraditionalClient.Base</item>
+    </style>
+    
+    <!-- Theme with ActionBar specifically for detail screens -->
+    <style name="Theme.TestEad2TraditionalClient.WithActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:theme">@style/Theme.TestEad2TraditionalClient.Base</item>
+        
+        <!-- Ensure the ActionBar is displayed -->
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+    </style>
 </resources>
