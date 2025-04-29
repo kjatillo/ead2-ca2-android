@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Base application theme with shared attributes -->
-    <style name="Theme.TestEad2TraditionalClient.Base" parent="">
+    <style name="Theme.EAD2_CA2.AndroidClient.Base" parent="">
         <!-- Primary brand color -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_variant</item>
@@ -29,12 +29,12 @@
     
     <!-- Main theme without ActionBar -->
     <style name="Theme.TestEad2TraditionalClient" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:theme">@style/Theme.TestEad2TraditionalClient.Base</item>
+        <item name="android:theme">@style/Theme.EAD2_CA2.AndroidClient.Base</item>
     </style>
     
     <!-- Theme with ActionBar specifically for detail screens -->
     <style name="Theme.TestEad2TraditionalClient.WithActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:theme">@style/Theme.TestEad2TraditionalClient.Base</item>
+        <item name="android:theme">@style/Theme.EAD2_CA2.AndroidClient.Base</item>
         
         <!-- Ensure the ActionBar is displayed -->
         <item name="windowActionBar">true</item>
