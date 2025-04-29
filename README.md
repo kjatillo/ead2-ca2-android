@@ -6,16 +6,15 @@ A full-stack meal planning application consisting of a .NET Web API backend and 
 
 The solution consists of two main projects:
 
-### 1. TestEad2.AndroidApi (.NET Web API)
+### 1. EAD2_CA2.Api (.NET Web API)
 - Backend API built with .NET 8.0
 - Entity Framework Core for data access
 - SQL Server database
 - Swagger UI for API documentation
 - Repository pattern implementation
 
-### 2. TestEad2.AndroidClient (Android App)
-- Modern Android application using Jetpack Compose
-- Material Design 3 components
+### 2. EAD2_CA2.AndroidClient (Android App)
+- Modern Android application
 - Minimum SDK: 24 (Android 7.0)
 - Target SDK: 35
 - Written in Java
@@ -44,8 +43,8 @@ The solution consists of two main projects:
    dotnet restore
    dotnet run
    ```
-5. The API will be available at `https://localhost:5001`
-6. Swagger UI will be available at `https://localhost:5001/swagger`
+5. The API will be available at `https://localhost:{port}`
+6. Swagger UI will be available at `https://localhost:{port}/swagger/index.html`
 
 ### Android Client Setup
 1. Open the `EAD2_CA2.Api` directory in Android Studio
@@ -54,7 +53,17 @@ The solution consists of two main projects:
 4. Build and run the application
 
 ## Features
-
 - Meal planning
 - RESTful API endpoints
 - Modern Android UI 
+
+## Developers
+**Name**: Jorune Sveikauskaite <br />
+**Student ID**: X00187267 <br />
+**Student Email**: x00187267@mytudublin.ie <br />
+
+<br />
+
+**Name**: Keneith Atillo <br />
+**Student ID**: X00190944 <br />
+**Student Email**: x00190944@mytudublin.ie <br />
