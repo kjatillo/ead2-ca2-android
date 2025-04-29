@@ -1,61 +1,141 @@
-package com.example.ead2_ca2androidclient.models;
+package com.example.ead2_ca2androidclient.repository;
 
-public class MealPlan {
-    private int mealPlanId;
-    private int recipeId;
-    private String day;
-    private String mealType;
-    private String notes;
-    
-    // Default constructor required for JSON deserialization
-    public MealPlan() {
+import android.util.Log;
+
+import com.example.ead2_ca2androidclient.api.MealPlanApiService;
+import com.example.ead2_ca2androidclient.api.RetrofitClient;
+import com.example.ead2_ca2androidclient.models.MealPlan;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class MealPlanRepository {
+    private static final String TAG = "MealPlanRepository";
+    private final MealPlanApiService mealPlanService;
+
+    public MealPlanRepository() {
+        this.mealPlanService = RetrofitClient.getInstance().getMealPlanApiService();
     }
 
-    public MealPlan(int mealPlanId, int recipeId, String day, String mealType, String notes) {
-        this.mealPlanId = mealPlanId;
-        this.recipeId = recipeId;
-        this.day = day;
-        this.mealType = mealType;
-        this.notes = notes;
+    public interface ApiCallback<T> {
+        void onSuccess(T result);
+        void onError(String message);
     }
 
-    public int getMealPlanId() {
-        return mealPlanId;
+    public void getAllMealPlans(ApiCallback<List<MealPlan>> callback) {
+        mealPlanService.getAllMealPlans().enqueue(new Callback<List<MealPlan>>() {
+            @Override
+            public void onResponse(Call<List<MealPlan>> call, Response<List<MealPlan>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to fetch meal plans");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<MealPlan>> call, Throwable t) {
+                Log.e(TAG, "Error fetching meal plans", t);
+                callback.onError(t.getMessage());
+            }
+        });
     }
 
-    public void setMealPlanId(int mealPlanId) {
-        this.mealPlanId = mealPlanId;
+    public void getMealPlanById(int mealPlanId, ApiCallback<MealPlan> callback) {
+        mealPlanService.getMealPlanById(mealPlanId).enqueue(new Callback<MealPlan>() {
+            @Override
+            public void onResponse(Call<MealPlan> call, Response<MealPlan> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to fetch meal plan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MealPlan> call, Throwable t) {
+                Log.e(TAG, "Error fetching meal plan", t);
+                callback.onError(t.getMessage());
+            }
+        });
     }
 
-    public int getRecipeId() {
-        return recipeId;
+    public void getMealPlansByDay(String day, ApiCallback<List<MealPlan>> callback) {
+        mealPlanService.getMealPlansByDay(day).enqueue(new Callback<List<MealPlan>>() {
+            @Override
+            public void onResponse(Call<List<MealPlan>> call, Response<List<MealPlan>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to fetch meal plans for day: " + day);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<MealPlan>> call, Throwable t) {
+                Log.e(TAG, "Error fetching meal plans by day", t);
+                callback.onError(t.getMessage());
+            }
+        });
     }
 
-    public void setRecipeId(int recipeId) {
-        this.recipeId = recipeId;
+    public void createMealPlan(MealPlan mealPlan, ApiCallback<MealPlan> callback) {
+        mealPlanService.createMealPlan(mealPlan).enqueue(new Callback<MealPlan>() {
+            @Override
+            public void onResponse(Call<MealPlan> call, Response<MealPlan> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to create meal plan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MealPlan> call, Throwable t) {
+                Log.e(TAG, "Error creating meal plan", t);
+                callback.onError(t.getMessage());
+            }
+        });
     }
 
-    public String getDay() {
-        return day;
+    public void updateMealPlan(MealPlan mealPlan, ApiCallback<MealPlan> callback) {
+        mealPlanService.updateMealPlan(mealPlan.getMealPlanId(), mealPlan).enqueue(new Callback<MealPlan>() {
+            @Override
+            public void onResponse(Call<MealPlan> call, Response<MealPlan> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to update meal plan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MealPlan> call, Throwable t) {
+                Log.e(TAG, "Error updating meal plan", t);
+                callback.onError(t.getMessage());
+            }
+        });
     }
 
-    public void setDay(String day) {
-        this.day = day;
-    }
+    public void deleteMealPlan(int mealPlanId, ApiCallback<Boolean> callback) {
+        mealPlanService.deleteMealPlan(mealPlanId).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(true);
+                } else {
+                    callback.onError("Failed to delete meal plan");
+                }
+            }
 
-    public String getMealType() {
-        return mealType;
-    }
-
-    public void setMealType(String mealType) {
-        this.mealType = mealType;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e(TAG, "Error deleting meal plan", t);
+                callback.onError(t.getMessage());
+            }
+        });
     }
 }
