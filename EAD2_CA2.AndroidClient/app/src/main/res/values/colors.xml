@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <!-- Standard colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="text_secondary">#5D4037</color>     <!-- Medium brown for secondary text -->
+    
+    <!-- Food-themed color palette -->
+    <color name="primary">#D84315</color>            <!-- Warm terracotta/clay red -->
+    <color name="primary_variant">#9F3010</color>    <!-- Deeper burgundy -->
+    <color name="secondary">#BF360C</color>          <!-- Deep burnt orange -->
+    
+    <color name="background">#FFFBF6</color>         <!-- Warm off-white -->
+    <color name="surface">#FFF8F1</color>            <!-- Slightly warmer white for cards -->
+    <color name="error">#E53935</color>              <!-- Soft red for errors -->
+    
+    <color name="on_primary">#FFFFFF</color>         <!-- White text on primary -->
+    <color name="on_secondary">#212121</color>       <!-- Dark gray on secondary -->
+    <color name="on_background">#33261D</color>      <!-- Rich brown text instead of black -->
+    <color name="on_surface">#33261D</color>         <!-- Rich brown text on surface -->
+    <color name="on_error">#FFFFFF</color>           <!-- White text on error -->
 </resources>
