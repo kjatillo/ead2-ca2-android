@@ -40,6 +40,32 @@ android {
 }
 
 dependencies {
+    // AppCompat for traditional view-based activities
+    implementation("androidx.appcompat:appcompat:1.6.1")
+
+    // Material Components for Android (needed for Material Design themes and components)
+    implementation("com.google.android.material:material:1.11.0")
+
+    // ConstraintLayout for XML layouts
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    // Retrofit for API communication
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    // OkHttp for logging network requests
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    // RecyclerView for displaying lists
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    // CardView for card layouts
+    implementation("androidx.cardview:cardview:1.0.0")
+
+    // Glide for image loading
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
