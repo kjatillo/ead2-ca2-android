@@ -1,36 +1,47 @@
 
-namespace EAD2_CA2.Api
+using EAD2_CA2.Api.Data;
+using EAD2_CA2.Api.Repositories.Implementations;
+using EAD2_CA2.Api.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+
+namespace EAD2_CA2.Api;
+
+public class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+        var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+        builder.Services.AddDbContext<MealPlannerContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+        builder.Services.AddScoped<IMealPlanRepository, MealPlanRepository>();
 
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+        builder.Services.AddControllers()
+            .AddJsonOptions(options =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+                options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+            });
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "EAD2CA2 API", Version = "v1" });
+        });
 
-            app.UseHttpsRedirection();
+        var app = builder.Build();
 
-            app.UseAuthorization();
-
-
-            app.MapControllers();
-
-            app.Run();
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
         }
+
+        app.UseHttpsRedirection();
+        app.UseRouting();
+        app.UseAuthorization();
+        app.MapControllers();
+
+        app.Run();
     }
 }
