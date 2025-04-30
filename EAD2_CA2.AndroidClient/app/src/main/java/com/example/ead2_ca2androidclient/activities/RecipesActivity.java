@@ -229,6 +229,7 @@ public class RecipesActivity extends BaseActivity implements RecipeAdapter.OnIte
         final EditText ingredientEdit = dialogView.findViewById(R.id.edit_ingredient);
         Button applyButton = dialogView.findViewById(R.id.btn_apply);
         Button resetButton = dialogView.findViewById(R.id.btn_reset);
+        ImageButton closeButton = dialogView.findViewById(R.id.btn_close);
 
         setupFilterSpinners(categorySpinner, cuisineSpinner);
 
@@ -236,6 +237,13 @@ public class RecipesActivity extends BaseActivity implements RecipeAdapter.OnIte
                 maxCaloriesEdit, ingredientEdit);
 
         final AlertDialog dialog = builder.create();
+
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
 
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override

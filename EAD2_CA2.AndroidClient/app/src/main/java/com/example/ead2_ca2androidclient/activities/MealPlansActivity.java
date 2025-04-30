@@ -7,6 +7,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,10 +29,6 @@ import java.util.List;
 public class MealPlansActivity extends BaseActivity implements MealPlanAdapter.MealPlanListener, 
         NavigationBarView.OnItemSelectedListener {
     
-    // Request code constants
-    private static final int REQUEST_CODE_ADD_MEAL_PLAN = 1001;
-    private static final int REQUEST_CODE_EDIT_MEAL_PLAN = 1002;
-    
     // UI Components
     private RecyclerView recyclerView;
     private MealPlanAdapter adapter;
@@ -42,6 +40,23 @@ public class MealPlansActivity extends BaseActivity implements MealPlanAdapter.M
     private MealPlanRepository mealPlanRepository;
     private RecipeRepository recipeRepository;
     private List<Recipe> availableRecipes = new ArrayList<>();
+    
+    // Activity Result Launchers
+    private final ActivityResultLauncher<Intent> addMealPlanLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    loadAllMealPlans();
+                }
+            });
+    
+    private final ActivityResultLauncher<Intent> editMealPlanLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    loadAllMealPlans();
+                }
+            });
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +105,7 @@ public class MealPlansActivity extends BaseActivity implements MealPlanAdapter.M
     private void setupAddButton() {
         addButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, MealPlanEditActivity.class);
-            startActivityForResult(intent, REQUEST_CODE_ADD_MEAL_PLAN);
+            addMealPlanLauncher.launch(intent);
         });
     }
     
@@ -133,7 +148,7 @@ public class MealPlansActivity extends BaseActivity implements MealPlanAdapter.M
         intent.putExtra(MealPlanEditActivity.EXTRA_MEAL_TYPE, mealPlan.getMealType());
         intent.putExtra(MealPlanEditActivity.EXTRA_RECIPE_ID, mealPlan.getRecipeId());
         intent.putExtra(MealPlanEditActivity.EXTRA_NOTES, mealPlan.getNotes());
-        startActivityForResult(intent, REQUEST_CODE_EDIT_MEAL_PLAN);
+        editMealPlanLauncher.launch(intent);
     }
 
     @Override
@@ -174,17 +189,6 @@ public class MealPlansActivity extends BaseActivity implements MealPlanAdapter.M
                 handler.handleError(getString(R.string.error_deleting_meal_plan, message));
             }
         });
-    }
-    
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        
-        if (resultCode == RESULT_OK && 
-            (requestCode == REQUEST_CODE_ADD_MEAL_PLAN || requestCode == REQUEST_CODE_EDIT_MEAL_PLAN)) {
-
-            loadAllMealPlans();
-        }
     }
     
     @Override
