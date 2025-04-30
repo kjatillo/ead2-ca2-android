@@ -17,7 +17,15 @@ public class MealPlanRepository : IMealPlanRepository
 
     public async Task<IEnumerable<MealPlan>> GetAllMealPlansAsync()
     {
-        return await _context.MealPlans.ToListAsync();
+        return await _context.MealPlans
+            .OrderBy(mp => mp.DayOfWeek == Enums.Day.Monday ? 1 :
+                     mp.DayOfWeek == Enums.Day.Tuesday ? 2 : 
+                     mp.DayOfWeek == Enums.Day.Wednesday ? 3 : 
+                     mp.DayOfWeek == Enums.Day.Thursday ? 4 : 
+                     mp.DayOfWeek == Enums.Day.Friday ? 5 : 
+                     mp.DayOfWeek == Enums.Day.Saturday ? 6 : 7)
+            .ThenBy(mp => mp.MealType)
+            .ToListAsync();
     }
 
     public async Task<MealPlan?> GetMealPlanByIdAsync(int mealPlanId)
