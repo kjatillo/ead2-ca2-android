@@ -50,8 +50,11 @@ public class MealPlanAdapter extends RecyclerView.Adapter<MealPlanAdapter.MealPl
     public void onBindViewHolder(@NonNull MealPlanViewHolder holder, int position) {
         MealPlan mealPlan = mealPlans.get(position);
         
-        // Set basic text fields
+        // Set day text with appropriate styling
         holder.dayText.setText(mealPlan.getDay());
+        holder.dayText.setTextColor(android.graphics.Color.WHITE);
+        holder.dayText.setVisibility(View.VISIBLE);
+        
         holder.mealTypeText.setText(mealPlan.getMealType());
         
         // Load and set recipe name

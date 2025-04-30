@@ -134,11 +134,17 @@ public class MealPlanEditActivity extends BaseActivity {
             String mealType = intent.getStringExtra(EXTRA_MEAL_TYPE);
             String notes = intent.getStringExtra(EXTRA_NOTES);
             
+            // Set day spinner
             int dayIndex = getDayIndex(day);
-            if (dayIndex >= 0) daySpinner.setSelection(dayIndex);
+            if (dayIndex >= 0) {
+                daySpinner.setSelection(dayIndex);
+            }
             
+            // Set meal type spinner
             int mealTypeIndex = getMealTypeIndex(mealType);
-            if (mealTypeIndex >= 0) mealTypeSpinner.setSelection(mealTypeIndex);
+            if (mealTypeIndex >= 0) {
+                mealTypeSpinner.setSelection(mealTypeIndex);
+            }
             
             if (notes != null) {
                 notesEdit.setText(notes);

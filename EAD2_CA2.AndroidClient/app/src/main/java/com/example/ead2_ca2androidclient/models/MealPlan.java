@@ -1,9 +1,14 @@
 package com.example.ead2_ca2androidclient.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class MealPlan {
     private int mealPlanId;
     private int recipeId;
+    
+    @SerializedName("dayOfWeek")
     private String day;
+    
     private String mealType;
     private String notes;
     
