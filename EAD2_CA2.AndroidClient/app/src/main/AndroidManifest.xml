@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Internet permissions for API calls -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,18 +15,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EAD2_CA2AndroidClient"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.ead2_ca2androidclient.activities.RecipesActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.EAD2_CA2AndroidClient">
+            android:label="@string/recipes">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.example.ead2_ca2androidclient.activities.MealPlansActivity"
+            android:exported="false"
+            android:label="@string/meal_plans" />
+
+        <activity
+            android:name="com.example.ead2_ca2androidclient.activities.MealPlanEditActivity"
+            android:exported="false"
+            android:label="@string/add_meal_plan"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name="com.example.ead2_ca2androidclient.activities.RecipeDetailActivity"
+            android:exported="false"
+            android:label="Recipe Details"
+            android:parentActivityName="com.example.ead2_ca2androidclient.activities.RecipesActivity" />
     </application>
 
 </manifest>
