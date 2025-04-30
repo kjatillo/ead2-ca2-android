@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import com.example.ead2_ca2androidclient.R;
 import com.example.ead2_ca2androidclient.models.MealPlan;
 import com.example.ead2_ca2androidclient.models.Recipe;
+import com.example.ead2_ca2androidclient.repository.MealPlanRepository;
 import com.example.ead2_ca2androidclient.repository.RecipeRepository;
 
 import java.util.ArrayList;

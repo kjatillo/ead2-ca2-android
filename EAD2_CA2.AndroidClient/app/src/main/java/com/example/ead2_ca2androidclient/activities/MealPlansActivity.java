@@ -15,6 +15,7 @@ import com.example.ead2_ca2androidclient.R;
 import com.example.ead2_ca2androidclient.adapter.MealPlanAdapter;
 import com.example.ead2_ca2androidclient.models.MealPlan;
 import com.example.ead2_ca2androidclient.models.Recipe;
+import com.example.ead2_ca2androidclient.repository.MealPlanRepository;
 import com.example.ead2_ca2androidclient.repository.RecipeRepository;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
