@@ -28,12 +28,12 @@
     </style>
     
     <!-- Main theme without ActionBar -->
-    <style name="Theme.TestEad2TraditionalClient" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.EAD2_CA2AndroidClient" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:theme">@style/Theme.EAD2_CA2.AndroidClient.Base</item>
     </style>
     
     <!-- Theme with ActionBar specifically for detail screens -->
-    <style name="Theme.TestEad2TraditionalClient.WithActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.EAD2_CA2AndroidClient.WithActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:theme">@style/Theme.EAD2_CA2.AndroidClient.Base</item>
         
         <!-- Ensure the ActionBar is displayed -->
