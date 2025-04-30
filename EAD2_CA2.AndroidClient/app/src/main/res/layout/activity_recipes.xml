@@ -44,6 +44,18 @@
             app:iconifiedByDefault="false"
             app:queryHint="@string/search_recipes_hint" />
 
+        <Button
+            android:id="@+id/btn_clear_filters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/clear_filters"
+            android:textSize="14sp"
+            android:padding="8dp"
+            android:visibility="gone"
+            android:textColor="@color/primary"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
         <ImageButton
             android:id="@+id/btn_filter"
             android:layout_width="48dp"

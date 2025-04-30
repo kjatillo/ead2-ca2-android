@@ -67,6 +67,7 @@ public class RecipesActivity extends BaseActivity implements RecipeAdapter.OnIte
 
         setupSearchView();
         setupFilterButton();
+        setupClearFiltersButton();
 
         bottomNavigationView.setOnItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.navigation_recipes);
@@ -106,6 +107,18 @@ public class RecipesActivity extends BaseActivity implements RecipeAdapter.OnIte
             public void onClick(View v) {
                 showFilterDialog();
             }
+        });
+    }
+
+    private void setupClearFiltersButton() {
+        Button clearFiltersButton = findViewById(R.id.btn_clear_filters);
+        clearFiltersButton.setOnClickListener(v -> {
+            resetAllFilters();
+
+            // Hide the clear button
+            clearFiltersButton.setVisibility(View.GONE);
+            
+            loadAllRecipes();
         });
     }
 
@@ -184,6 +197,17 @@ public class RecipesActivity extends BaseActivity implements RecipeAdapter.OnIte
         String category = currentCategory.isEmpty() ? null : currentCategory;
         String cuisine = currentCuisine.isEmpty() ? null : currentCuisine;
         String ingredient = currentIngredient.isEmpty() ? null : currentIngredient;
+
+        // Check if any filters are active
+        boolean anyFilterActive = !currentCategory.isEmpty() || 
+                                 !currentCuisine.isEmpty() || 
+                                 currentMinCalories != null || 
+                                 currentMaxCalories != null || 
+                                 !currentIngredient.isEmpty();
+        
+        // Show or hide the clear filters button based on filter state
+        Button clearFiltersButton = findViewById(R.id.btn_clear_filters);
+        clearFiltersButton.setVisibility(anyFilterActive ? View.VISIBLE : View.GONE);
 
         recipeRepository.filterRecipes(
                 category, cuisine, currentMinCalories, currentMaxCalories,
@@ -381,6 +405,14 @@ public class RecipesActivity extends BaseActivity implements RecipeAdapter.OnIte
         minCaloriesEdit.setText("");
         maxCaloriesEdit.setText("");
         ingredientEdit.setText("");
+    }
+
+    private void resetAllFilters() {
+        currentCategory = "";
+        currentCuisine = "";
+        currentMinCalories = null;
+        currentMaxCalories = null;
+        currentIngredient = "";
     }
 
     @Override
