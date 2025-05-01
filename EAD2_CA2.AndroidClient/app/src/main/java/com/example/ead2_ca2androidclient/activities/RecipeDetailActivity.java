@@ -89,7 +89,6 @@ public class RecipeDetailActivity extends BaseActivity {
             // Find the root view (NestedScrollView) from the layout
             NestedScrollView scrollView = findViewById(R.id.recipe_detail_scroll_view);
             if (scrollView == null) {
-                // If the scrollview doesn't have an ID, try finding the first child of the content view
                 View contentView = findViewById(android.R.id.content);
                 if (contentView instanceof ViewGroup && ((ViewGroup)contentView).getChildCount() > 0) {
                     View firstChild = ((ViewGroup)contentView).getChildAt(0);
@@ -100,10 +99,9 @@ public class RecipeDetailActivity extends BaseActivity {
             }
 
             if (scrollView != null) {
-                // Create a button with proper styling
                 Button backButton = new Button(this);
-                backButton.setText("← Back to Recipes");
-                backButton.setOnClickListener(v -> onBackPressed());
+                backButton.setText(getString(R.string.back_to_recipes_arrow));
+                backButton.setOnClickListener(v -> finish());
 
                 // Create layout parameters for the button
                 LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(
@@ -130,14 +128,11 @@ public class RecipeDetailActivity extends BaseActivity {
                 }
 
                 if (scrollViewIndex != -1) {
-                    // Remove scrollView from its parent
                     parent.removeView(scrollView);
 
-                    // Add the button and original content to the new container
                     newContainer.addView(backButton);
                     newContainer.addView(scrollView);
 
-                    // Add the new container to the original parent
                     parent.addView(newContainer, scrollViewIndex);
                 }
             } else {
@@ -145,8 +140,8 @@ public class RecipeDetailActivity extends BaseActivity {
                 View contentView = findViewById(android.R.id.content);
                 if (contentView instanceof ViewGroup) {
                     Button backButton = new Button(this);
-                    backButton.setText("← Back to Recipes");
-                    backButton.setOnClickListener(v -> onBackPressed());
+                    backButton.setText(getString(R.string.back_to_recipes_arrow));
+                    backButton.setOnClickListener(v -> finish());
 
                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -159,8 +154,7 @@ public class RecipeDetailActivity extends BaseActivity {
                 }
             }
         } catch (Exception e) {
-            // If any error occurs, fallback to the simplest approach
-            showToast("Use the Back button or gesture to return to Recipes");
+            showToast(getString(R.string.use_back_button));
         }
     }
 
@@ -251,7 +245,7 @@ public class RecipeDetailActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);

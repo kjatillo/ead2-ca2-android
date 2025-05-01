@@ -117,7 +117,7 @@ public class RecipesActivity extends BaseActivity implements RecipeAdapter.OnIte
 
             // Hide the clear button
             clearFiltersButton.setVisibility(View.GONE);
-            
+
             loadAllRecipes();
         });
     }
@@ -361,6 +361,7 @@ public class RecipesActivity extends BaseActivity implements RecipeAdapter.OnIte
                                         EditText minCaloriesEdit, EditText maxCaloriesEdit,
                                         EditText ingredientEdit) {
         if (!currentCategory.isEmpty()) {
+            @SuppressWarnings("unchecked")
             ArrayAdapter<String> adapter = (ArrayAdapter<String>) categorySpinner.getAdapter();
             int position = adapter.getPosition(currentCategory);
             if (position >= 0) {
@@ -369,6 +370,7 @@ public class RecipesActivity extends BaseActivity implements RecipeAdapter.OnIte
         }
 
         if (!currentCuisine.isEmpty()) {
+            @SuppressWarnings("unchecked")
             ArrayAdapter<String> adapter = (ArrayAdapter<String>) cuisineSpinner.getAdapter();
             int position = adapter.getPosition(currentCuisine);
             if (position >= 0) {
@@ -431,11 +433,7 @@ public class RecipesActivity extends BaseActivity implements RecipeAdapter.OnIte
             startActivity(intent);
             finish();
             return true;
-        } else if (itemId == R.id.navigation_recipes) {
-            // We're already on recipes page, just return true
-            return true;
-        }
-        return false;
+        } else return itemId == R.id.navigation_recipes;
     }
 
     @Override

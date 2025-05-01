@@ -21,6 +21,8 @@
     <string name="recipes">Recipes</string>
     <string name="meal_plans">Meal Plans</string>
     <string name="back_to_recipes">Back to Recipes</string>
+    <string name="back_to_recipes_arrow">← Back to Recipes</string>
+    <string name="use_back_button">Use the Back button or gesture to return to Recipes</string>
 
     <!-- Recipe list strings -->
     <string name="no_recipes">No recipes found</string>
