@@ -1,3 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- General/Common strings -->
+    <string name="app_name">Maisto Planuotojas</string>
+    <string name="loading">Kraunasi…</string>
+    <string name="not_specified">Nenurodyta</string>
+
+    <!-- Action strings -->
+    <string name="action_search">Paieška</string>
+    <string name="add">Pridėti</string>
+    <string name="edit">Redaguoti</string>
+    <string name="save">Išsaugoti</string>
+    <string name="cancel">Atšaukti</string>
+    <string name="delete">Ištrinti</string>
+    <string name="filter">Filtruoti</string>
+    <string name="apply">Pritaikyti</string>
+    <string name="reset">Atstatyti</string>
+    <string name="close">Uždaryti</string>
+    <string name="clear_filters">Išvalyti filtrus</string>
+
+    <!-- Navigation strings -->
+    <string name="recipes">Receptai</string>
+    <string name="meal_plans">Maisto Planai</string>
+    <string name="back_to_recipes">Grįžti prie receptų</string>
+    <string name="back_to_recipes_arrow">← Grįžti prie receptų</string>
+    <string name="use_back_button">Naudokite grįžimo mygtuką arba gestą, kad grįžtumėte prie receptų</string>
+
+    <!-- Recipe list strings -->
+    <string name="no_recipes">Receptų nerasta</string>
+    <string name="recipe_name_placeholder">Recepto pavadinimas</string>
+
+    <!-- Recipe detail strings -->
+    <string name="recipe_details">Recepto informacija</string>
+    <string name="unknown_recipe">Nežinomas receptas</string>
+    <string name="category_label">Kategorija:</string>
+    <string name="cuisine_label">Virtuvė:</string>
+    <string name="calories_label">Kalorijos:</string>
+    <string name="ingredients_label">Ingredientai</string>
+    <string name="no_ingredients">Ingredientai nenurodyti</string>
+    <string name="instructions_label">Paruošimo instrukcijos</string>
+    <string name="no_instructions">Instrukcijos nenurodytos</string>
+    <string name="recipe_not_found">Receptas nerastas</string>
+    <string name="add_to_meal_plan">Pridėti į maisto planą</string>
+
+    <!-- Recipe search and filter strings -->
+    <string name="search_recipes">Ieškoti receptų</string>
+    <string name="search_recipes_hint">Ieškoti pavadinimo ar ingrediento…</string>
+    <string name="filter_recipes">Filtruoti receptus</string>
+    <string name="filter_category">Kategorija</string>
+    <string name="filter_cuisine">Virtuvė</string>
+    <string name="filter_min_calories">Min. kalorijos</string>
+    <string name="filter_max_calories">Maks. kalorijos</string>
+    <string name="filter_ingredient">Turi ingredientą</string>
+    <string name="min_calories_hint">0</string>
+    <string name="max_calories_hint">5000</string>
+    <string name="ingredient_hint">pvz., vištiena</string>
+
+    <!-- Meal plan strings -->
+    <string name="no_meal_plans">Maisto planų nerasta</string>
+    <string name="add_meal_plan">Pridėti maisto planą</string>
+    <string name="edit_meal_plan">Redaguoti maisto planą</string>
+    <string name="delete_meal_plan">Ištrinti maisto planą</string>
+    <string name="meal_plan_added">Maisto planas pridėtas</string>
+    <string name="meal_plan_updated">Maisto planas atnaujintas</string>
+    <string name="meal_plan_deleted">Maisto planas ištrintas</string>
+    <string name="day">Diena</string>
+    <string name="meal_type">Valgio tipas</string>
+    <string name="notes">Pastabos</string>
+    <string name="notes_hint">Įveskite pastabas apie šį maisto planą…</string>
+    <string name="confirm_delete">Ar tikrai norite ištrinti šį maisto planą?</string>
+    <string name="select_recipe">Pasirinkti receptą</string>
+    <string name="please_select_recipe">Prašome pasirinkti receptą</string>
+
+    <!-- Error messages -->
+    <string name="error_loading_recipes">Klaida įkeliant receptus: %1$s</string>
+    <string name="error_loading_recipe">Klaida įkeliant receptą: %1$s</string>
+    <string name="error_loading_meal_plans">Klaida įkeliant maisto planus: %1$s</string>
+    <string name="error_adding_meal_plan">Klaida pridedant maisto planą: %1$s</string>
+    <string name="error_updating_meal_plan">Klaida atnaujinant maisto planą: %1$s</string>
+    <string name="error_deleting_meal_plan">Klaida ištrinant maisto planą: %1$s</string>
+
+    <!-- String arrays -->
+    <string-array name="days_of_week">
+        <item>Pirmadienis</item>
+        <item>Antradienis</item>
+        <item>Trečiadienis</item>
+        <item>Ketvirtadienis</item>
+        <item>Penktadienis</item>
+        <item>Šeštadienis</item>
+        <item>Sekmadienis</item>
+    </string-array>
+
+    <string-array name="meal_types">
+        <item>Pusryčiai</item>
+        <item>Pietūs</item>
+        <item>Vakarienė</item>
+    </string-array>
 </resources>
