@@ -2,6 +2,14 @@
 
 A full-stack meal planning application consisting of a .NET Web API backend and an Android client application.
 
+## Table of Contents
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Setup Instructions](#setup-instructions)
+- [Key Features](#key-features)
+- [Testing](#testing)
+- [Contributors](#contributors)
+
 ## Project Structure
 
 The solution consists of two main projects:
@@ -32,38 +40,47 @@ The solution consists of two main projects:
 - Android SDK with API level 35
 - Gradle 8.x
 
-## Getting Started
+## Setup Instructions
 
 ### Backend Setup
 1. Clone the repository
 2. Navigate to the `EAD2_CA2.Api` directory
 3. Update the connection string in `appsettings.json`
-4. Run the following commands:
+4. Run database migrations:
    ```bash
-   dotnet restore
+   dotnet ef database update
+   ```
+5. Start the API:
+   ```bash
    dotnet run
    ```
-5. The API will be available at `https://localhost:{port}`
-6. Swagger UI will be available at `https://localhost:{port}/swagger/index.html`
+6. Access the API at `https://localhost:{port}`
+7. API documentation is available at `https://localhost:{port}/swagger/index.html`
 
 ### Android Client Setup
-1. Open the `EAD2_CA2.Api` directory in Android Studio
+1. Open the `EAD2_CA2.AndroidClient` directory in Android Studio
 2. Sync the project with Gradle files
-3. Update the API base URL in the app configuration
-4. Build and run the application
+3. Ensure the API base URL in `ApiServiceGenerator.java` points to your running backend
+4. Build and run the application on an emulator or physical device
 
-## Features
-- Meal planning
-- RESTful API endpoints
-- Modern Android UI 
+## Key Features
 
-## Developers
-**Name**: Jorune Sveikauskaite <br />
-**Student ID**: X00187267 <br />
-**Student Email**: x00187267@mytudublin.ie <br />
+- Browse, search, and filter recipes by various criteria
+- Create and manage meal plans
+- View detailed recipe information
+- Responsive and intuitive user interface
+- RESTful API with complete CRUD operations
 
-<br />
+## Testing
 
-**Name**: Keneith Atillo <br />
-**Student ID**: X00190944 <br />
-**Student Email**: x00190944@mytudublin.ie <br />
+The Android application includes Espresso framework for automated end-to-end testing of critical user flows
+
+## Contributors
+
+**Jorune Sveikauskaite**  
+Student ID: X00187267  
+Email: x00187267@mytudublin.ie  
+
+**Keneith Atillo**  
+Student ID: X00190944  
+Email: x00190944@mytudublin.ie
